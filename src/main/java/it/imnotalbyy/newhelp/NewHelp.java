@@ -21,7 +21,6 @@ public class NewHelp extends JavaPlugin implements Listener {
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
         getCommand("help").setExecutor(this);
-        // Messaggio di abilitazione del plugin
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RESET + "[NewHelp] " + ChatColor.GREEN + "By ImNotAlbyy");
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RESET + "[NewHelp] " + ChatColor.GREEN + "Plugin Enabled!");
         helpFile = new File(getDataFolder(), "help.yml");
@@ -30,6 +29,8 @@ public class NewHelp extends JavaPlugin implements Listener {
         if (!helpFile.exists()) {
             saveResource("help.yml", false);
         }
+        int pluginId = 22255;
+        Metrics metrics = new Metrics(this, pluginId);
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -49,7 +50,6 @@ public class NewHelp extends JavaPlugin implements Listener {
         if (helpConfig.contains("messages")) {
             List<String> messages = helpConfig.getStringList("messages");
             for (String message : messages) {
-                // Sostituisci i codici dei colori con i codici di formattazione di Minecraft
                 message = ChatColor.translateAlternateColorCodes('&', message);
                 sender.sendMessage(message);
             }
