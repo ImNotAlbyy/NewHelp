@@ -1,0 +1,9 @@
+name: NewHelp
+version: '${version}'
+main: it.imnotalbyy.newhelp.NewHelp
+api-version: '1.20'
+load: STARTUP
+authors: [ImNotAlbyy]
+commands:
+  help:
+    description: Can show a message to a player.
